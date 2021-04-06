@@ -62,7 +62,8 @@ def down_img(imglist):
         for dpi in dpilist:
             print(f"下载{dpi}图片")
             save_img(item[dpi], f"{base_path}/img/{dpi}/{img_date}.jpg")
-    open(f"{base_path}/{name}", 'a').close()
+    with open (f"{base_path}/title", 'w', encoding = 'UTF-8') as f:
+        f.write(name)
 
 if __name__ == "__main__":
     folder()
