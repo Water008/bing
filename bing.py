@@ -47,10 +47,11 @@ def getBingImg():
         return False
     
 def save_img(url, path):
-    img = requests.get(url, stream=True)
+    img = requests.get(url)
     if img.status_code == 200:
         with open(path, "wb") as f:
-            f.write(img.content)
+            for chunk in img.iter_content(1024):
+                f.write(chunk)
             print('Create Image Success!')
     else:
         print('Create Image Faild!')
