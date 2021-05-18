@@ -47,7 +47,7 @@ def getBingImg():
         return False
     
 def save_img(url, path):
-    img = requests.get(url)
+    img = requests.get(url, stream=True)
     if img.status_code == 200:
         with open(path, "wb") as f:
             for chunk in img.iter_content(1024):
